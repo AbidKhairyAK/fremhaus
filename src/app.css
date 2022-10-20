@@ -1,0 +1,24 @@
+@import url(./fonts/fonts.css);
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+	.text-default {
+		@apply leading-none tracking-[-0.075em] font-semibold;
+		word-spacing: 0.25rem;
+	}
+}
+
+:is(#projects, #contact) .scroll-content {
+	height: 100%;
+}
+:is(#projects, #contact) .scrollbar-track-x {
+	transform: scaleX(0.5);
+	border-radius: 1rem;
+	background-color: #ffffff22;
+}
+:is(#projects, #contact) .scrollbar-thumb-x {
+	background-color: #ffffff99;
+}
