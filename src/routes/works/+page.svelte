@@ -15,7 +15,7 @@
 			const el = document.querySelector('#project-' + index)
 			const { offsetHeight, offsetWidth } = el
 			const top = rand(-30, offsetHeight - 120)
-			const left = rand(-20, offsetWidth - 240)
+			const left = rand(0, offsetWidth - 240)
 			const rotate = rand(-10, 10)
 			captionStyles[index].wrapper = `top: ${top}px; left: ${left}px;`
 			captionStyles[index].box = `transform: rotate(${rotate}deg);`
@@ -52,6 +52,35 @@
 			</a>
 		</section>
 
+		<section class="flex flex-col">
+			<table class="text-default text-sm leading-normal">
+				<tr>
+					<td class="font-extrabold text-right align-top pr-6">
+						Client{work.clients.length > 1 ? 's' : ''}:
+					</td>
+					<td>
+						{#each work.clients as client}
+							<p>{client}</p>
+						{/each}
+					</td>
+				</tr>
+				<tr>
+					<td class="font-extrabold text-right align-top pr-6">
+						Service{work.services.length > 1 ? 's' : ''}:
+					</td>
+					<td>
+						{#each work.services as service}
+							<p>{service}</p>
+						{/each}
+					</td>
+				</tr>
+			</table>
+
+			<p class="text-default text-3xl mt-4 -ml-2">
+				{work.year}
+			</p>
+		</section>
+<!--
 		<section class="text-default text-sm text-right font-extrabold leading-normal mr-6">
 			<p>Clients:</p>
 			<p>Services:</p>
@@ -63,7 +92,7 @@
 			<p>Animation Blablabla</p>
 			<p>Desain Blablabla</p>
 			<p>Motocrylic Blablabla</p>
-		</section>
+		</section> -->
 	</header>
 
 	<section
@@ -77,7 +106,7 @@
 					{#if project.type === 'image'}
 						<img src={project.src} alt="art" class="h-full w-auto">
 					{:else if project.type === 'video'}
-						<video class="aspect-video h-full w-auto" autoplay muted>
+						<video class="aspect-video h-full w-auto" autoplay muted loop>
 							<source src={project.src} type="video/mp4">
 						</video>
 					{/if}

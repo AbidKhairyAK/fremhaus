@@ -1,6 +1,9 @@
 [
 	{
-		"client": "Maikel Scotty",
+		"year": 2022,
+		"clients": [
+			"Maikel Scotty"
+		],
 		"services": [
 			"Animation Blablabla",
 			"Desain Blablabla",
