@@ -1,5 +1,7 @@
 <script>
 	import { onMount } from 'svelte'
+	import Scrollbar from "smooth-scrollbar";
+	import InvertDeltaPlugin from "$lib/utils/InvertDeltaPlugin.js";
 	import { rand } from '$lib/utils/helper.js'
 
 	export let data;
@@ -21,9 +23,16 @@
 	}
 
 	async function initSmoothScroll () {
-		const Scrollbar = (await import('smooth-scrollbar')).default
-		Scrollbar.init(document.querySelector('#projects'), {
-			alwaysShowTracks: true
+		const scrollContainer = document.querySelector('#projects')
+
+		Scrollbar.use(InvertDeltaPlugin);
+		Scrollbar.init(scrollContainer, {
+			alwaysShowTracks: true,
+			plugins: {
+				invertDelta: {
+					events: ["wheel"],
+				},
+			},
 		})
 	}
 

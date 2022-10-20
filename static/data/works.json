@@ -11,25 +11,25 @@
 				"type": "image",
 				"title": "TOTORO",
 				"subtitle": "Phone Wallpaper",
-				"src": "/works/client-bambang/komin.png"
+				"src": "/data/client-bambang/komin.png"
 			},
 			{
 				"type": "image",
 				"title": "TOTORO",
 				"subtitle": "Phone Wallpaper",
-				"src": "/works/client-bambang/asc.png"
+				"src": "/data/client-bambang/asc.png"
 			},
 			{
 				"type": "image",
 				"title": "TOTORO",
 				"subtitle": "Phone Wallpaper",
-				"src": "/works/client-bambang/apaan-tuh.jpg"
+				"src": "/data/client-bambang/apaan-tuh.jpg"
 			},
 			{
 				"type": "video",
 				"title": "TOTORO",
 				"subtitle": "Phone Wallpaper",
-				"src": "/works/client-bambang/merchant-preview.mp4"
+				"src": "/data/client-bambang/merchant-preview.mp4"
 			}
 		]
 	}
