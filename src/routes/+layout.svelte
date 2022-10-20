@@ -12,7 +12,7 @@
 			<i class="fa-brands fa-twitter text-[#1DA1F2] text-xl"></i>
 		</a>
 	</aside>
-	<main class="flex-grow">
+	<main class="flex-grow overflow-hidden">
 		<slot />
 	</main>
 </div>

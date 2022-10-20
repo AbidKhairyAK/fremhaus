@@ -1,11 +1,26 @@
+<script>
+    import { onMount } from "svelte";
+	import reactToPointer from '$lib/utils/reactToPointer.js'
+
+	onMount(() => {
+		const { pointerEvent } = reactToPointer()
+		document.addEventListener('mousemove', pointerEvent)
+		return () => {
+			document.removeEventListener('mousemove', pointerEvent)
+		}
+	})
+</script>
+
 <section class="px-14 py-7 relative border-b border-zinc-500">
 	<h1 class="text-[8rem] text-default">
 		for your stream graphic<br>
 		and animation needs.<br>
 		<span class="text-primary">all in one place.</span>
 	</h1>
+		<!-- class="absolute right-0 bottom-0 -z-10 mr-14 mb-4 w-[17.5rem] h-[17.5rem] object-contain" -->
 	<img
-		class="absolute right-0 bottom-0 -z-10 mr-14 mb-4 w-[17.5rem] h-[17.5rem] object-contain"
+		react-to-pointer
+		class="absolute left-0 bottom-0 -z-10 ml-[70rem] mb-4 w-[17.5rem] h-[17.5rem] object-contain"
 		src="/assets/logo.png"
 		alt="fremhaus logo">
 </section>

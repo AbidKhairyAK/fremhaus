@@ -1,21 +1,6 @@
 <script>
 	import { onMount } from "svelte";
-	import Scrollbar from "smooth-scrollbar";
-	import InvertDeltaPlugin from "$lib/utils/InvertDeltaPlugin.js";
-
-	async function initSmoothScroll() {
-		const scrollContainer = document.querySelector("#articles");
-
-		Scrollbar.use(InvertDeltaPlugin);
-		Scrollbar.init(scrollContainer, {
-			alwaysShowTracks: true,
-			plugins: {
-				invertDelta: {
-					events: ["wheel"],
-				},
-			},
-		});
-	}
+	import initSmoothScroll from '$lib/utils/initSmoothScroll.js'
 
 	onMount(() => {
 		initSmoothScroll();
@@ -36,7 +21,7 @@
 	</header>
 
 	<section
-		id="articles"
+		smooth-scroll
 		class="overflow-x-auto flex-grow px-14 scrollbar-thin scrollbar-thumb-rounded-full scrollbar-thumb-white/50 hover:scrollbar-thumb-white scrollbar-track-transparent"
 	>
 		<div class="pt-4 flex items-start flex-nowrap space-x-8">

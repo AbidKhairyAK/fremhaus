@@ -1,7 +1,8 @@
 <script>
 	import { onMount } from 'svelte'
-	import Scrollbar from "smooth-scrollbar";
-	import InvertDeltaPlugin from "$lib/utils/InvertDeltaPlugin.js";
+
+	import reactToPointer from '$lib/utils/reactToPointer.js'
+	import initSmoothScroll from '$lib/utils/initSmoothScroll.js'
 	import { rand } from '$lib/utils/helper.js'
 
 	export let data;
@@ -22,23 +23,15 @@
 		}
 	}
 
-	async function initSmoothScroll () {
-		const scrollContainer = document.querySelector('#projects')
-
-		Scrollbar.use(InvertDeltaPlugin);
-		Scrollbar.init(scrollContainer, {
-			alwaysShowTracks: true,
-			plugins: {
-				invertDelta: {
-					events: ["wheel"],
-				},
-			},
-		})
-	}
-
 	onMount(() => {
 		initSmoothScroll()
 		generateCaptionStyle()
+
+		const { pointerEvent } = reactToPointer()
+		document.addEventListener('mousemove', pointerEvent)
+		return () => {
+			document.removeEventListener('mousemove', pointerEvent)
+		}
 	})
 </script>
 
@@ -96,7 +89,7 @@
 	</header>
 
 	<section
-		id="projects"
+		smooth-scroll
 		class="flex-grow overflow-y-auto w-full px-12 scrollbar-thin scrollbar-thumb-rounded-full scrollbar-thumb-white/50 hover:scrollbar-thumb-white scrollbar-track-transparent">
 		<article class="flex space-x-8 h-full box-border py-7">
 			{#each work.projects as project, index (project)}
@@ -110,7 +103,10 @@
 							<source src={project.src} type="video/mp4">
 						</video>
 					{/if}
-					<figcaption class={"absolute w-72 px-8 py-10 box-content" + (captionStyles[index].wrapper ? 'visible' : 'invisible opacity-0')} style={captionStyles[index].wrapper}>
+					<figcaption
+						react-to-pointer
+						class={"absolute z-10 w-72 px-8 py-10 box-content" + (captionStyles[index].wrapper ? 'visible' : 'invisible opacity-0')}
+						style={captionStyles[index].wrapper}>
 						<div class="absolute inset-0 z-10 w-full h-full bg-primary-shallow/90 rounded-xl shadow-xl" style={captionStyles[index].box}></div>
 						<h3 class="z-20 relative text-default text-3xl font-bold leading-snug">{project.title}</h3>
 						<h4 class="z-20 relative text-default">{project.subtitle}</h4>

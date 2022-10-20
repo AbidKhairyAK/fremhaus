@@ -11,14 +11,14 @@
 	}
 }
 
-:is(#projects, #contact) .scroll-content {
+[smooth-scroll] .scroll-content {
 	height: 100%;
 }
-:is(#projects, #contact) .scrollbar-track-x {
+[smooth-scroll] .scrollbar-track-x {
 	transform: scaleX(0.5);
 	border-radius: 1rem;
 	background-color: #ffffff22;
 }
-:is(#projects, #contact) .scrollbar-thumb-x {
+[smooth-scroll] .scrollbar-thumb-x {
 	background-color: #ffffff99;
 }
