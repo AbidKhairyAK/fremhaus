@@ -1,42 +1,46 @@
 <script>
 	import { onMount } from "svelte";
 	import initSmoothScroll from "$lib/utils/initSmoothScroll.js";
+	import throttle from 'lodash/throttle'
 
-	onMount(() => {
-		const isHorizontal = false;
-		initSmoothScroll(isHorizontal);
+	function handleContactHeader () {
+		const contactHeader = document.querySelector("#contact-header");
 
-		const debounce = (func, delay) => {
-			let debounceTimer;
-			return function () {
-				const context = this;
-				const args = arguments;
-				clearTimeout(debounceTimer);
-				debounceTimer = setTimeout(() => func.apply(context, args), delay);
-			};
-		};
-
-		const contactHeader = document.querySelector('#contact-header')
-
-		const observer = new MutationObserver(function (mutations) {
+		function observerCallback (mutations) {
 			mutations.forEach(function (mutationRecord) {
-				const thumbDistance = parseInt(mutationRecord.target.style.transform.split(',')[1])
-				if (thumbDistance < 50) contactHeader.classList.add('z-40')
-				else contactHeader.classList.remove('z-40')
+				const thumbDistance = parseInt(
+					mutationRecord.target.style.transform.split(",")[1]
+				);
+				if (thumbDistance < 50) contactHeader.classList.add("z-40");
+				else contactHeader.classList.remove("z-40");
 			});
-		});
+		}
 
-		const thumb = document.querySelector("[smooth-scroll] .scrollbar-thumb-y");
+		const throttledObserverCallback = throttle(observerCallback, 100)
+
+		const observer = new MutationObserver(throttledObserverCallback);
+
+		const thumb = document.querySelector(
+			"[smooth-scroll] .scrollbar-thumb-y"
+		);
 		observer.observe(thumb, {
 			attributes: true,
 			attributeFilter: ["style"],
 		});
+	}
+
+	onMount(() => {
+		const isHorizontal = false;
+		initSmoothScroll(isHorizontal);
+		handleContactHeader()
 	});
 </script>
 
 <div id="contact" class="flex flex-col h-screen overflow-y-auto">
 	<header id="contact-header" class="pt-11 px-14 mb-10 fixed">
-		<h1 class="inline-block text-[7.5rem] text-default pb-2 border-b-4 border-white">
+		<h1
+			class="inline-block text-[7.5rem] text-default pb-2 border-b-4 border-white"
+		>
 			contact.
 		</h1>
 		<a href="/" class="text-default mt-4 block">
@@ -47,7 +51,9 @@
 
 	<section smooth-scroll class="px-12 pb-3 pt-[18rem] mx-2 relative">
 		<div class="grid grid-cols-1 lg:grid-cols-2 2xl:grid-cols-3 gap-8">
-			<article class="bg-dark-shallow rounded-xl p-6 shadow-xl row-span-1 lg:row-span-2 xl2:row-span-1">
+			<article
+				class="bg-dark-shallow rounded-xl p-6 shadow-xl row-span-1 lg:row-span-2 xl2:row-span-1"
+			>
 				<h2
 					class="text-default text-right text-3xl -translate-y-10 -translate-x-10"
 				>
@@ -130,7 +136,9 @@
 					</ul>
 				</div>
 			</article>
-			<article class="bg-dark-shallow rounded-xl p-6 shadow-xl col-span-1 lg:col-span-2 xl2:col-span-3">
+			<article
+				class="bg-dark-shallow rounded-xl p-6 shadow-xl col-span-1 lg:col-span-2 xl2:col-span-3"
+			>
 				<h2
 					class="text-default text-right text-3xl -translate-y-10 -translate-x-10"
 				>
