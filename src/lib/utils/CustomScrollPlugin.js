@@ -1,10 +1,10 @@
 import { ScrollbarPlugin } from 'smooth-scrollbar';
 
-export default class InvertDeltaPlugin extends ScrollbarPlugin {
-	static pluginName = 'invertDelta';
+export default class CustomScrollPlugin extends ScrollbarPlugin {
+	static pluginName = 'customScroll';
 
 	static defaultOptions = {
-		events: [],
+		isHorizontal: false,
 	};
 
 	transformDelta(delta, fromEvent) {
@@ -20,8 +20,8 @@ export default class InvertDeltaPlugin extends ScrollbarPlugin {
 
 	shouldInvertDelta(fromEvent) {
 		// const isMouse = (fromEvent.deltaY > 60 || fromEvent.deltaY < -60) && fromEvent.deltaX <= 0
-		const isVertical = fromEvent.deltaX == 0
-		const isMatch = this.options.events.some(rule => fromEvent.type.match(rule))
-		return isMatch && isVertical;
+		const notVertical = fromEvent.deltaX == 0
+		const isMatch = this.options.isHorizontal
+		return isMatch && notVertical;
 	}
 }

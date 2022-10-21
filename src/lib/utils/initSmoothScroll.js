@@ -1,16 +1,18 @@
 import Scrollbar from "smooth-scrollbar";
-import InvertDeltaPlugin from "$lib/utils/InvertDeltaPlugin.js";
+import CustomScrollPlugin from "$lib/utils/CustomScrollPlugin.js";
 
-export default function initSmoothScroll() {
+export default function initSmoothScroll(isHorizontal = false) {
 	const scrollContainer = document.querySelector('[smooth-scroll]')
+	let options = {
+		alwaysShowTracks: true
+	}
 
-	Scrollbar.use(InvertDeltaPlugin)
-	Scrollbar.init(scrollContainer, {
-		alwaysShowTracks: true,
-		plugins: {
-			invertDelta: {
-				events: ["wheel"],
-			},
-		},
-	})
+	Scrollbar.use(CustomScrollPlugin)
+	options.plugins = {
+		customScroll: {
+			isHorizontal,
+		}
+	}
+
+	Scrollbar.init(scrollContainer, options)
 }

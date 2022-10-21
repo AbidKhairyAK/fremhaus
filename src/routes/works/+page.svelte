@@ -24,7 +24,8 @@
 	}
 
 	onMount(() => {
-		initSmoothScroll()
+		const isHorizontal = true
+		initSmoothScroll(isHorizontal)
 		generateCaptionStyle()
 
 		const { pointerEvent } = reactToPointer()

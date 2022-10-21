@@ -1,17 +1,42 @@
 <script>
 	import { onMount } from "svelte";
-	import initSmoothScroll from '$lib/utils/initSmoothScroll.js'
+	import initSmoothScroll from "$lib/utils/initSmoothScroll.js";
 
 	onMount(() => {
-		initSmoothScroll();
+		const isHorizontal = false;
+		initSmoothScroll(isHorizontal);
+
+		const debounce = (func, delay) => {
+			let debounceTimer;
+			return function () {
+				const context = this;
+				const args = arguments;
+				clearTimeout(debounceTimer);
+				debounceTimer = setTimeout(() => func.apply(context, args), delay);
+			};
+		};
+
+		const contactHeader = document.querySelector('#contact-header')
+
+		const observer = new MutationObserver(function (mutations) {
+			mutations.forEach(function (mutationRecord) {
+				const thumbDistance = parseInt(mutationRecord.target.style.transform.split(',')[1])
+				if (thumbDistance < 50) contactHeader.classList.add('z-40')
+				else contactHeader.classList.remove('z-40')
+			});
+		});
+
+		const thumb = document.querySelector("[smooth-scroll] .scrollbar-thumb-y");
+		observer.observe(thumb, {
+			attributes: true,
+			attributeFilter: ["style"],
+		});
 	});
 </script>
 
-<div id="contact" class="pt-11 pb-3 flex flex-col h-screen">
-	<header class="px-14 mb-10">
-		<h1
-			class="inline-block text-[7.5rem] text-default pb-2 border-b-4 border-white"
-		>
+<div id="contact" class="flex flex-col h-screen overflow-y-auto">
+	<header id="contact-header" class="pt-11 px-14 mb-10 fixed">
+		<h1 class="inline-block text-[7.5rem] text-default pb-2 border-b-4 border-white">
 			contact.
 		</h1>
 		<a href="/" class="text-default mt-4 block">
@@ -20,14 +45,9 @@
 		</a>
 	</header>
 
-	<section
-		smooth-scroll
-		class="overflow-x-auto flex-grow px-14 scrollbar-thin scrollbar-thumb-rounded-full scrollbar-thumb-white/50 hover:scrollbar-thumb-white scrollbar-track-transparent"
-	>
-		<div class="pt-4 flex items-start flex-nowrap space-x-8">
-			<article
-				class="bg-dark-shallow rounded-xl w-5/12 p-6 shadow-xl flex-shrink-0"
-			>
+	<section smooth-scroll class="px-12 pb-3 pt-[18rem] mx-2 relative">
+		<div class="grid grid-cols-1 lg:grid-cols-2 2xl:grid-cols-3 gap-8">
+			<article class="bg-dark-shallow rounded-xl p-6 shadow-xl row-span-1 lg:row-span-2 xl2:row-span-1">
 				<h2
 					class="text-default text-right text-3xl -translate-y-10 -translate-x-10"
 				>
@@ -60,9 +80,7 @@
 					</ul>
 				</div>
 			</article>
-			<article
-				class="bg-dark-shallow rounded-xl w-5/12 p-6 shadow-xl flex-shrink-0"
-			>
+			<article class="bg-dark-shallow rounded-xl p-6 shadow-xl ">
 				<h2
 					class="text-default text-right text-3xl -translate-y-10 -translate-x-10"
 				>
@@ -87,9 +105,7 @@
 					</ul>
 				</div>
 			</article>
-			<article
-				class="bg-dark-shallow rounded-xl w-5/12 p-6 shadow-xl flex-shrink-0"
-			>
+			<article class="bg-dark-shallow rounded-xl p-6 shadow-xl ">
 				<h2
 					class="text-default text-right text-3xl -translate-y-10 -translate-x-10"
 				>
@@ -114,9 +130,7 @@
 					</ul>
 				</div>
 			</article>
-			<article
-				class="bg-dark-shallow rounded-xl w-3/12 p-6 shadow-xl flex-shrink-0"
-			>
+			<article class="bg-dark-shallow rounded-xl p-6 shadow-xl col-span-1 lg:col-span-2 xl2:col-span-3">
 				<h2
 					class="text-default text-right text-3xl -translate-y-10 -translate-x-10"
 				>
@@ -131,14 +145,6 @@
 						<li class="text-default">
 							<i class="fa-brands fa-twitter mr-2" />
 							fremhaus
-						</li>
-						<li class="text-default">
-							<i class="fa-brands fa-facebook mr-2" />
-							fremhaus
-						</li>
-						<li class="text-default">
-							<i class="fa-solid fa-phone mr-2" />
-							+62 888 8888 8888
 						</li>
 					</ul>
 				</div>
