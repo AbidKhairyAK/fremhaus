@@ -1,7 +1,7 @@
 export default function reactToPointer() {
 	const elements = document.querySelectorAll('[react-to-pointer]')
-	const divisorX = Math.ceil(window.innerWidth / -75)
-	const divisorY = Math.ceil(window.innerHeight / -75)
+	const divisorX = Math.ceil(window.innerWidth / -25)
+	const divisorY = Math.ceil(window.innerHeight / -25)
 
 	const targets = [...elements].map(element => {
 		const elementRect = element.getBoundingClientRect();

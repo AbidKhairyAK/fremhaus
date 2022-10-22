@@ -9,30 +9,40 @@
 
 	const work = data.works[0]
 
-	const captionPositions = [
-		'-left-4 -top-2',
-		'-left-4 bottom-4',
-		'-right-2 -top-2',
-		'-right-2 bottom-4',
-
-		'left-[30%] -top-2',
-		'left-[30%] bottom-4',
-		'top-[30%] -left-4',
-		'top-[30%] -right-4',
-		'top-[30%] left-[30%]',
-
-		'left-10 top-10',
-		'left-10 bottom-10',
-		'right-10 top-10',
-		'right-10 bottom-10',
-	]
 	let captionStyles = [... new Array(work.projects.length).keys()].map(() => ({}))
+
+
 
 	function generateCaptionStyle () {
 		for (const index in work.projects) {
-			const rotate = rand(0, 1) ? rand(-10, -4) : rand(4, 10)
-			captionStyles[index].wrapper = captionPositions[rand(0, captionPositions.length - 1)]
-			captionStyles[index].box = `transform: rotate(${rotate}deg);`
+			let loaded = false
+
+			function imgLoadHandler (index) {
+				if (loaded) return
+				loaded = true
+				const el = document.querySelector('#project-' + index)
+				const { clientHeight, clientWidth } = el
+				const top = rand(-30, clientHeight - 120)
+				const left = rand(0, clientWidth - 240)
+				console.log('left', left)
+				console.log('top', top)
+				const rotate = rand(-10, 10)
+				captionStyles[index].wrapper = `top: ${top}px; left: ${left}px;`
+				captionStyles[index].box = `transform: rotate(${rotate}deg);`
+			}
+
+			const media = document.querySelector('#media-' + index)
+
+			switch (media.tagName) {
+				case 'IMG':
+					media.onload = imgLoadHandler(index)
+					media.src = media.src
+					if (media.complete) imgLoadHandler(index)
+					break
+				case 'VIDEO':
+					media.onloadeddata = imgLoadHandler(index)
+					break
+			}
 		}
 	}
 
@@ -99,20 +109,26 @@
 					class="h-full flex-shrink-0 relative">
 
 					{#if project.type === 'image'}
-						<img src={project.src} alt="art" class="h-full w-auto">
+						<img id={'media-' + index} src={project.src} alt="art" class="h-full w-auto">
 					{:else if project.type === 'video'}
-						<video class="aspect-video h-full w-auto" autoplay muted loop>
+						<video id={'media-' + index} class="aspect-video h-full w-auto" autoplay muted loop>
 							<source src={project.src} type="video/mp4">
 						</video>
 					{/if}
 
-					<figcaption
-						react-to-pointer
-						class={"absolute z-10 w-[15rem] px-8 py-10 box-content " + captionStyles[index].wrapper}>
-						<div class="absolute inset-0 z-10 w-full h-full bg-primary-shallow/90 rounded-xl shadow-xl" style={captionStyles[index].box}></div>
-						<h3 class="z-20 relative text-default text-3xl font-bold leading-snug">{project.title}</h3>
-						<h4 class="z-20 relative text-default">{project.subtitle}</h4>
-					</figcaption>
+					{#if captionStyles[index].wrapper}
+						<figcaption
+							react-to-pointer
+							class="absolute z-10 w-64 px-8 py-10 box-content"
+							style={captionStyles[index].wrapper}>
+							<div
+								class="absolute inset-0 z-10 w-full h-full bg-primary-shallow/90 rounded-xl shadow-xl"
+								style={captionStyles[index].box}>
+							</div>
+							<h3 class="z-20 relative text-default text-3xl font-bold leading-snug">{project.title}</h3>
+							<h4 class="z-20 relative text-default">{project.subtitle}</h4>
+						</figcaption>
+					{/if}
 				</figure>
 			{/each}
 
