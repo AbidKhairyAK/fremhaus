@@ -106,13 +106,15 @@
 						</video>
 					{/if}
 
-					<figcaption
-						react-to-pointer
-						class={"absolute z-10 w-[15rem] px-8 py-10 box-content " + captionStyles[index].wrapper}>
-						<div class="absolute inset-0 z-10 w-full h-full bg-primary-shallow/90 rounded-xl shadow-xl" style={captionStyles[index].box}></div>
-						<h3 class="z-20 relative text-default text-3xl font-bold leading-snug">{project.title}</h3>
-						<h4 class="z-20 relative text-default">{project.subtitle}</h4>
-					</figcaption>
+					{#if captionStyles[index].wrapper}
+						<figcaption
+							react-to-pointer
+							class={"absolute z-10 w-[15rem] px-8 py-10 box-content " + captionStyles[index].wrapper}>
+							<div class="absolute inset-0 z-10 w-full h-full bg-primary-shallow/90 rounded-xl shadow-xl" style={captionStyles[index].box}></div>
+							<h3 class="z-20 relative text-default text-3xl font-bold leading-snug">{project.title}</h3>
+							<h4 class="z-20 relative text-default">{project.subtitle}</h4>
+						</figcaption>
+					{/if}
 				</figure>
 			{/each}
 
