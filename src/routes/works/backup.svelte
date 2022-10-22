@@ -11,37 +11,15 @@
 
 	let captionStyles = [... new Array(work.projects.length).keys()].map(() => ({}))
 
-
-
 	function generateCaptionStyle () {
 		for (const index in work.projects) {
-			let loaded = false
-
-			function imgLoadHandler (index) {
-				if (loaded) return
-				loaded = true
-				console.log('called', index)
-				const el = document.querySelector('#project-' + index)
-				const { offsetHeight, offsetWidth } = el
-				const top = rand(-30, offsetHeight - 120)
-				const left = rand(0, offsetWidth - 240)
-				const rotate = rand(-10, 10)
-				captionStyles[index].wrapper = `top: ${top}px; left: ${left}px;`
-				captionStyles[index].box = `transform: rotate(${rotate}deg);`
-			}
-
-			const media = document.querySelector('#media-' + index)
-
-			switch (media.tagName) {
-				case 'IMG':
-					media.onload = imgLoadHandler(index)
-					media.src = media.src
-					if (media.complete) imgLoadHandler(index)
-					break
-				case 'VIDEO':
-					media.onloadeddata = imgLoadHandler(index)
-					break
-			}
+			const el = document.querySelector('#project-' + index)
+			const { offsetHeight, offsetWidth } = el
+			const top = rand(-30, offsetHeight - 120)
+			const left = rand(0, offsetWidth - 240)
+			const rotate = rand(-10, 10)
+			captionStyles[index].wrapper = `top: ${top}px; left: ${left}px;`
+			captionStyles[index].box = `transform: rotate(${rotate}deg);`
 		}
 	}
 
@@ -108,26 +86,21 @@
 					class="h-full flex-shrink-0 relative">
 
 					{#if project.type === 'image'}
-						<img id={'media-' + index} src={project.src} alt="art" class="h-full w-auto">
+						<img src={project.src} alt="art" class="h-full w-auto">
 					{:else if project.type === 'video'}
-						<video id={'media-' + index} class="aspect-video h-full w-auto" autoplay muted loop>
+						<video class="aspect-video h-full w-auto" autoplay muted loop>
 							<source src={project.src} type="video/mp4">
 						</video>
 					{/if}
 
-					{#if captionStyles[index].wrapper}
-						<figcaption
-							react-to-pointer
-							class="absolute z-10 w-64 px-8 py-10 box-content"
-							style={captionStyles[index].wrapper}>
-							<div
-								class="absolute inset-0 z-10 w-full h-full bg-primary-shallow/90 rounded-xl shadow-xl"
-								style={captionStyles[index].box}>
-							</div>
-							<h3 class="z-20 relative text-default text-3xl font-bold leading-snug">{project.title}</h3>
-							<h4 class="z-20 relative text-default">{project.subtitle}</h4>
-						</figcaption>
-					{/if}
+					<figcaption
+						react-to-pointer
+						class={"absolute z-10 w-72 px-8 py-10 box-content" + (captionStyles[index].wrapper ? 'visible' : 'invisible opacity-0')}
+						style={captionStyles[index].wrapper}>
+						<div class="absolute inset-0 z-10 w-full h-full bg-primary-shallow/90 rounded-xl shadow-xl" style={captionStyles[index].box}></div>
+						<h3 class="z-20 relative text-default text-3xl font-bold leading-snug">{project.title}</h3>
+						<h4 class="z-20 relative text-default">{project.subtitle}</h4>
+					</figcaption>
 				</figure>
 			{/each}
 
