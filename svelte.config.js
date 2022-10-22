@@ -10,7 +10,8 @@ const config = {
 			fallback: null,
 			precompress: false,
 			strict: true
-		})
+		}),
+		trailingSlash: 'always'
 	},
 	preprocess: [
 		preprocess({
