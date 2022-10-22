@@ -20,11 +20,12 @@
 			function imgLoadHandler (index) {
 				if (loaded) return
 				loaded = true
-				console.log('called', index)
 				const el = document.querySelector('#project-' + index)
-				const { offsetHeight, offsetWidth } = el
-				const top = rand(-30, offsetHeight - 120)
-				const left = rand(0, offsetWidth - 240)
+				const { clientHeight, clientWidth } = el
+				const top = rand(-30, clientHeight - 120)
+				const left = rand(0, clientWidth - 240)
+				console.log('left', left)
+				console.log('top', top)
 				const rotate = rand(-10, 10)
 				captionStyles[index].wrapper = `top: ${top}px; left: ${left}px;`
 				captionStyles[index].box = `transform: rotate(${rotate}deg);`
