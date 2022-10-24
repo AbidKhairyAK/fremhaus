@@ -10,12 +10,12 @@
 	const work = data.works[0]
 
 	const captionPositions = [
-		'-left-4 -top-2',
+		'-left-4 top-0',
 		'-left-4 bottom-4',
-		'-right-2 -top-2',
+		'-right-2 top-0',
 		'-right-2 bottom-4',
 
-		'left-[30%] -top-2',
+		'left-[30%] top-0',
 		'left-[30%] bottom-4',
 		'top-[30%] -left-4',
 		'top-[30%] -right-4',
@@ -48,6 +48,10 @@
 		}
 	})
 </script>
+
+<svelte:head>
+  <title>Works | Fremhaus</title>
+</svelte:head>
 
 <div id="works" class="flex flex-col h-full relative pt-11 pb-3">
 	<header class="px-14 flex">
@@ -106,15 +110,13 @@
 						</video>
 					{/if}
 
-					{#if captionStyles[index].wrapper}
-						<figcaption
-							react-to-pointer
-							class={"absolute z-10 w-[15rem] px-8 py-10 box-content " + captionStyles[index].wrapper}>
-							<div class="absolute inset-0 z-10 w-full h-full bg-primary-shallow/90 rounded-xl shadow-xl" style={captionStyles[index].box}></div>
-							<h3 class="z-20 relative text-default text-3xl font-bold leading-snug">{project.title}</h3>
-							<h4 class="z-20 relative text-default">{project.subtitle}</h4>
-						</figcaption>
-					{/if}
+					<figcaption
+						react-to-pointer
+						class={"absolute z-10 w-[15rem] px-8 py-10 box-content " + (captionStyles[index].wrapper || 'hidden')}>
+						<div class="absolute inset-0 z-10 w-full h-full bg-primary-shallow/90 rounded-xl shadow-xl" style={captionStyles[index].box}></div>
+						<h3 class="z-20 relative text-default text-3xl font-bold leading-snug">{project.title}</h3>
+						<h4 class="z-20 relative text-default">{project.subtitle}</h4>
+					</figcaption>
 				</figure>
 			{/each}
 

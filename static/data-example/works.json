@@ -1,0 +1,40 @@
+[
+	{
+		"year": 2022,
+		"clients": [
+			"Maikel Scotty",
+			"Bambang Suyatno"
+		],
+		"services": [
+			"Animation Blablabla",
+			"Desain Blablabla",
+			"Motocrylic Blablabla"
+		],
+		"projects": [
+			{
+				"type": "image",
+				"title": "TOTORO",
+				"subtitle": "Phone Wallpaper",
+				"src": "/data/client-bambang/image1.png"
+			},
+			{
+				"type": "image",
+				"title": "TOTORO",
+				"subtitle": "Phone Wallpaper",
+				"src": "/data/client-bambang/image2.png"
+			},
+			{
+				"type": "image",
+				"title": "TOTORO",
+				"subtitle": "Phone Wallpaper",
+				"src": "/data/client-bambang/image3.jpg"
+			},
+			{
+				"type": "video",
+				"title": "TOTORO",
+				"subtitle": "Phone Wallpaper",
+				"src": "/data/client-bambang/video1.mp4"
+			}
+		]
+	}
+]

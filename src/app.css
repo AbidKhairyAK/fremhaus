@@ -17,13 +17,13 @@
 }
 [smooth-scroll] .scrollbar-track {
 	border-radius: 1rem;
-	background-color: #ffffff22;
+	background-color: #ffffff11;
 }
 [smooth-scroll] .scrollbar-track-x {
 	transform: scaleX(0.5);
 }
 [smooth-scroll] .scrollbar-track-y {
-	transform: scaleY(0.5);
+	transform: scaleY(0.5) translateX(-50%);
 }
 [smooth-scroll] .scrollbar-thumb {
 	background-color: #ffffff99;
