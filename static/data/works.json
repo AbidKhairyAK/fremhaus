@@ -2,25 +2,26 @@
 	{
 		"year": 2022,
 		"clients": [
-			"Maikel Scotty",
-			"Bambang Suyatno"
+			"Ayunda Risu (Hololive ID)",
+			"Airani Iofifteen (Hololive ID)"
 		],
 		"services": [
-			"Animation Blablabla",
-			"Desain Blablabla",
-			"Motocrylic Blablabla"
+			"3D Background Animation",
+			"Intro",
+			"Stinger",
+			"Gaming Overlay"
 		],
 		"projects": [
 			{
 				"type": "image",
-				"title": "TOTORO",
+				"title": "TEST BUILD",
 				"subtitle": "Phone Wallpaper",
 				"src": "/data/client-bambang/image1.png"
 			},
 			{
 				"type": "image",
-				"title": "TOTORO",
-				"subtitle": "Phone Wallpaper",
+				"title": "HI MOM",
+				"subtitle": "Love you mom!",
 				"src": "/data/client-bambang/image2.png"
 			},
 			{
