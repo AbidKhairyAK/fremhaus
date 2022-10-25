@@ -35,7 +35,7 @@
 
 <svelte:head>
   <title>Fremhaus</title>
-  <meta name="description" value="for your stream graphic and animation needs.">
+  <meta name="description" value="We are Fremhaus. We are ready to assist you for your graphic design, 3D modelling background, or animation needs.">
 </svelte:head>
 
 <!-- Mobile -->

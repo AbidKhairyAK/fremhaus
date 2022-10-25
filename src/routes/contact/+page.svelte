@@ -51,6 +51,7 @@
 
 <svelte:head>
   <title>Contact | Fremhaus</title>
+  <meta name="description" value="Here are our social media, if you're interested in working with us, we can talk more there! Feel free to ask us.">
 </svelte:head>
 
 {#if loaded}
