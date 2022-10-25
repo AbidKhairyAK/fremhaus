@@ -74,13 +74,11 @@
 				</section>
 
 				<p class="text-default leading-normal mb-4" in:fly={{ easing, y: 50, duration: 500, delay: 100 * 6 }}>
-					I am JACK!!! and I've been working as a designer for pretty long time,
-					I can do range of design and motion graphic work such as everything and anything.
-					Looking forward to work with you, and making it big and pretty.
+					Hello! We are Fremhaus. A new studio, but not new in the industry! We are ready to assist you for your graphic design, 3D modelling background, or animation needs.
 				</p>
 
 				<p class="text-default leading-normal mb-12" in:fly={{ easing, y: 50, duration: 500, delay: 100 * 7 }}>
-					Lets scroll down to see some of the things I've designed that i think you'll like.
+					Lets scroll down to see some of the things we've designed.
 				</p>
 
 				<section class="bg-dark-shallow p-4 rounded-lg shadow-md mb-8" in:fly={{ easing, y: 50, duration: 500, delay: 100 * 8 }}>
@@ -127,9 +125,9 @@
 					</h3>
 
 					<p class="text-default leading-normal mb-8">
-						here my social media, we can talk more there idk idk,
-						feel free to ask me about services etc,
-						my manager will do hehe lop yubb
+						Here are our social media, if you're interested in
+						working with us, we can talk more there!
+						Feel free to ask us
 					</p>
 
 					<article class="prose prose-invert text-default leading-relaxed">
