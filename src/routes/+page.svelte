@@ -35,6 +35,7 @@
 
 <svelte:head>
   <title>Fremhaus</title>
+  <meta name="description" value="for your stream graphic and animation needs.">
 </svelte:head>
 
 <!-- Mobile -->
@@ -42,25 +43,25 @@
 	<div class="block lg:hidden h-screen">
 		<div class="h-full" smooth-scroll>
 			<div class="container overflow-x-hidden">
-				<h2
+				<h1
 					class="pt-6 pb-10 text-default text-center font-bold"
 					in:fly={{ easing, y: 50, duration: 500 }}>
 					fremhaus.
-				</h2>
+				</h1>
 
 				<section id="mobile-header-wrapper" class="relative pb-6 mb-8 border-zinc-500">
-					<h1 class="text-default text-5xl drop-shadow">
-						<p in:fly={{ easing, y: 50, duration: 500, delay: 100 * 1 }}>for your</p>
-						<p in:fly={{ easing, y: 50, duration: 500, delay: 100 * 2 }}>stream graphic</p>
-						<p in:fly={{ easing, y: 50, duration: 500, delay: 100 * 3 }}>and animation</p>
-						<p in:fly={{ easing, y: 50, duration: 500, delay: 100 * 4 }}>needs.</p>
-						<p
+					<h2 class="text-default text-5xl drop-shadow">
+						<div in:fly={{ easing, y: 50, duration: 500, delay: 100 * 1 }}>for your</div>
+						<div in:fly={{ easing, y: 50, duration: 500, delay: 100 * 2 }}>stream graphic</div>
+						<div in:fly={{ easing, y: 50, duration: 500, delay: 100 * 3 }}>and animation</div>
+						<div in:fly={{ easing, y: 50, duration: 500, delay: 100 * 4 }}>needs.</div>
+						<div
 							class="text-primary"
 							in:fly={{ easing, y: 50, duration: 500, delay: 100 * 5 }}
 							on:introend={() => document.querySelector('#mobile-header-wrapper').classList.add('border-b-2')}>
 							all in one place.
-						</p>
-					</h1>
+						</div>
+					</h2>
 					<figure
 						react-to-pointer
 						in:scale={{ easing, start: 0.5, duration: 1000 }}
