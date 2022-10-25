@@ -67,15 +67,22 @@ const contact = {
 	contact: `
 		<ul>
 			<li>
-				<a href="mailto:fremhausgraphic@gmail.com">
+				<a href="mailto:hello@fremhaus.com">
 					<i class="fa-solid fa-envelope mr-2"></i>
-					fremhausgraphic@gmail.com
+					hello@fremhaus.com
 				</a>
 			</li>
 			<li>
-				<a href="https://twitter.com">
+				<a href="https://twitter.com/fremhaus" target="_blank">
 					<i class="fa-brands fa-twitter mr-2"></i>
 					fremhaus
+				</a>
+			</li>
+			
+			<li>
+				<a>
+					<i class="fa-brands fa-discord mr-2"></i>
+					fremhaus#3957
 				</a>
 			</li>
 		</ul>

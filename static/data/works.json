@@ -12,6 +12,12 @@
 			"Gaming Overlay"
 		],
 		"projects": [
+		    {
+				"type": "image",
+				"title": "Gundam Witch",
+				"subtitle": "Anime gud",
+				"src": "/data/client-bambang/gundam witch ori.jpg"
+			},
 			{
 				"type": "image",
 				"title": "TEST BUILD",

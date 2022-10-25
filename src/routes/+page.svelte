@@ -89,13 +89,10 @@
 			</section>
 
 			<p class="text-default leading-normal mb-4">
-				I think thats it for now, I'm still have plenty of design to show you,
-				it'll be updated over time.
+				As for now, our portfolio showcase is still limited and It will be updated along the way.
 			</p>
 			<p class="text-default leading-normal mb-8">
-				for now if you're interested, we can work together!
-				Contact me below and start making anything big big and future tested
-				idk man im not guude
+				But you don’t need to worry! We are confident that we can do broad range of design and motion graphic. Of course, we can  also discuss the design approach together!
 			</p>
 
 			<section class="bg-dark-shallow p-4 rounded-lg shadow-md mb-10">

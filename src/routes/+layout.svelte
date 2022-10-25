@@ -8,7 +8,7 @@
 		<button>
 			<i class="fa-solid fa-bars scale-x-150 text-2xl"></i>
 		</button>
-		<a href="https://twitter.com">
+		<a href="https://twitter.com/fremhaus" target="_blank">
 			<i class="fa-brands fa-twitter text-[#1DA1F2] text-xl"></i>
 		</a>
 	</aside>

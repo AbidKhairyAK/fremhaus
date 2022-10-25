@@ -30,7 +30,7 @@
 
 	function generateCaptionStyle () {
 		for (const index in work.projects) {
-			const rotate = rand(0, 1) ? rand(-10, -4) : rand(4, 10)
+			const rotate = rand(0, 1) ? rand(-5, -1) : rand(1, 5)
 			captionStyles[index].wrapper = captionPositions[rand(0, captionPositions.length - 1)]
 			captionStyles[index].box = `transform: rotate(${rotate}deg);`
 		}
