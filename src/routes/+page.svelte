@@ -98,7 +98,7 @@
 									{#if project.type === 'image'}
 										<img src={project.src} alt={project.title} class="w-full h-auto object-contain">
 									{:else if project.type === 'video'}
-										<video src={project.src} muted loop autoplay></video>
+										<video src={project.src} muted loop autoplay playsinline></video>
 									{/if}
 
 									<figcaption class="absolute left-0 right-0 bottom-0 bg-black/25 px-2 py-1 text-right text-default text-xs">
