@@ -44,7 +44,7 @@
 </svelte:head>
 
 <div id="contact" class="flex flex-col h-screen overflow-y-auto">
-	<header id="contact-header" class="pt-11 mb-10 lg:ml-14 fixed left-0 right-0">
+	<header id="contact-header" class="pt-7 mb-10 lg:ml-14 fixed left-0 right-0">
 		<div class="container">
 			<h1 class="inline-block text-7xl lg:text-[7.5rem] text-default pb-2 border-b-4 border-white">
 				contact.
@@ -56,7 +56,7 @@
 		</div>
 	</header>
 
-	<section smooth-scroll class="pb-3 pt-64 lg:pt-[18rem] relative">
+	<section smooth-scroll class="pb-3 pt-64 lg:pt-[16rem] relative">
 		<div class="container">
 			<div class="grid grid-cols-1 lg:grid-cols-2 2xl:grid-cols-3 gap-8">
 				<article class="bg-dark-shallow rounded-xl p-6 shadow-xl row-span-1 lg:row-span-2 xl2:row-span-1">

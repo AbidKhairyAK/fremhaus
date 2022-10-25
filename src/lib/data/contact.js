@@ -73,12 +73,12 @@ const contact = {
 				</a>
 			</li>
 			<li>
-				<a href="https://twitter.com/fremhaus" target="_blank">
+				<a href="https://twitter.com/fremhaus" target="_blank" rel="noreferrer">
 					<i class="fa-brands fa-twitter mr-2"></i>
 					fremhaus
 				</a>
 			</li>
-			
+
 			<li>
 				<a>
 					<i class="fa-brands fa-discord mr-2"></i>

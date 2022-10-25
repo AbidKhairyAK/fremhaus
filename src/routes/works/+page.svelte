@@ -36,15 +36,17 @@
 		}
 	}
 
+	function afterTransition () {
+		document.addEventListener('mousemove', reactToPointer)
+	}
+
 	onMount(() => {
 		const isHorizontal = true
 		initSmoothScroll(isHorizontal)
 		generateCaptionStyle()
 
-		const { pointerEvent } = reactToPointer()
-		document.addEventListener('mousemove', pointerEvent)
 		return () => {
-			document.removeEventListener('mousemove', pointerEvent)
+			document.removeEventListener('mousemove', reactToPointer)
 		}
 	})
 </script>
@@ -53,7 +55,7 @@
   <title>Works | Fremhaus</title>
 </svelte:head>
 
-<div id="works" class="flex flex-col h-full relative pt-11 pb-3">
+<div id="works" class="flex flex-col h-full relative pt-7 pb-3">
 	<header class="px-14 flex">
 		<section class="mr-24">
 			<h1 class="text-[7.5rem] text-default pb-2 border-b-4 border-white">works.</h1>
@@ -63,40 +65,34 @@
 			</a>
 		</section>
 
-		<section class="flex flex-col">
-			<table class="text-default text-sm leading-normal">
-				<tr>
-					<td class="font-extrabold text-right align-top pr-6">
-						Client{work.clients.length > 1 ? 's' : ''}:
-					</td>
-					<td>
-						{#each work.clients as client}
-							<p>{client}</p>
-						{/each}
-					</td>
-				</tr>
-				<tr>
-					<td class="font-extrabold text-right align-top pr-6">
-						Service{work.services.length > 1 ? 's' : ''}:
-					</td>
-					<td>
-						{#each work.services as service}
-							<p>{service}</p>
-						{/each}
-					</td>
-				</tr>
-			</table>
-
-			<p class="text-default text-3xl mt-4 -ml-2">
-				{work.year}
-			</p>
-		</section>
+		<table class="text-default text-sm leading-normal">
+			<tr>
+				<td class="font-extrabold text-right align-top pr-6">
+					Client{work.clients.length > 1 ? 's' : ''}:
+				</td>
+				<td class="align-top">
+					{#each work.clients as client}
+						<p>{client}</p>
+					{/each}
+				</td>
+			</tr>
+			<tr>
+				<td class="font-extrabold text-right align-top pr-6">
+					Service{work.services.length > 1 ? 's' : ''}:
+				</td>
+				<td class="align-top">
+					{#each work.services as service}
+						<p>{service}</p>
+					{/each}
+				</td>
+			</tr>
+		</table>
 	</header>
 
 	<section
 		smooth-scroll
 		class="flex-grow overflow-y-auto w-full px-12 scrollbar-thin scrollbar-thumb-rounded-full scrollbar-thumb-white/50 hover:scrollbar-thumb-white scrollbar-track-transparent">
-		<article class="flex space-x-8 h-full box-border py-7">
+		<article class="flex space-x-8 h-full box-border pt-5">
 			{#each work.projects as project, index (project)}
 				<figure
 					id={'project-' + index}
@@ -105,9 +101,7 @@
 					{#if project.type === 'image'}
 						<img src={project.src} alt="art" class="h-full w-auto">
 					{:else if project.type === 'video'}
-						<video class="aspect-video h-full w-auto" autoplay muted loop>
-							<source src={project.src} type="video/mp4">
-						</video>
+						<video src={project.src} class="aspect-video h-full w-auto" autoplay muted loop></video>
 					{/if}
 
 					<figcaption

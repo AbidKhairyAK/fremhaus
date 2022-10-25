@@ -4,7 +4,7 @@ import CustomScrollPlugin from "$lib/utils/CustomScrollPlugin.js";
 export default function initSmoothScroll(isHorizontal = false) {
 	const scrollContainer = document.querySelector('[smooth-scroll]')
 	let options = {
-		alwaysShowTracks: true
+		alwaysShowTracks: false
 	}
 
 	Scrollbar.use(CustomScrollPlugin)
