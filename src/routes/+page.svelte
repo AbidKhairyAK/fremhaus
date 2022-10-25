@@ -1,7 +1,7 @@
 <script>
     import { onMount, tick } from "svelte";
 	import { fly, scale } from "svelte/transition"
-	import { quartOut } from "svelte/easing"
+	import { quartOut, quartIn } from "svelte/easing"
 
 	import reactToPointer from '$lib/utils/reactToPointer.js'
 	import initSmoothScroll from '$lib/utils/initSmoothScroll.js'
@@ -63,6 +63,7 @@
 					</h1>
 					<figure
 						react-to-pointer
+						in:scale={{ easing, start: 0.5, duration: 1000 }}
 						class="transition-transform duration-200 ease-out absolute -right-[2rem] bottom-4 -z-10 mb-4">
 						<img
 							class="w-[12rem] h-[12rem] object-contain opacity-20 rotate-[20deg]"
@@ -150,7 +151,7 @@
 
 <!-- Desktop -->
 {#if loadedDesktop}
-	<div class="hidden lg:block">
+	<div class="hidden lg:block relative h-screen" out:fly={{ easing: quartIn, x: window.innerWidth * -1, duration: 500 }}>
 		<header class="py-7 border-b border-zinc-500">
 			<div class="container relative">
 				<h1 class="text-[5.5rem] xl:text-[8rem] text-default drop-shadow-md">
@@ -180,17 +181,17 @@
 				<div class="flex justify-end space-x-12">
 					<a
 						href="/works"
-						class="text-[6rem] text-default border-b-[3px] border-white pb-2 flex items-end"
+						class="text-[6rem] text-default border-b-[3px] border-white pb-2 flex items-end group hover:text-primary transition-colors duration-150 ease-out"
 						in:fly={{ easing, x: 150, duration: 500, delay: 600 }}>
 						works.
-						<img src="/assets/arrow.png" alt="arrow" class="w-[3.75rem] h-[3.75rem] object-contain mb-2 ml-5 mr-7">
+						<img src="/assets/arrow.png" alt="arrow" class="w-[3.75rem] h-[3.75rem] object-contain mb-2 ml-5 mr-7 group-hover:-rotate-45 transition-transform duration-150 ease-out" >
 					</a>
 					<a
 						href="/contact"
-						class="text-[6rem] text-default border-b-[3px] border-white pb-2 flex items-end"
+						class="text-[6rem] text-default border-b-[3px] border-white pb-2 flex items-end group hover:text-primary transition-colors duration-150 ease-out"
 						in:fly={{ easing, x: 150, duration: 500, delay: 750 }}>
 						contact.
-						<img src="/assets/arrow.png" alt="arrow" class="w-[3.75rem] h-[3.75rem] object-contain mb-2 ml-5 mr-7">
+						<img src="/assets/arrow.png" alt="arrow" class="w-[3.75rem] h-[3.75rem] object-contain mb-2 ml-5 mr-7 group-hover:-rotate-45 transition-transform duration-150 ease-out">
 					</a>
 				</div>
 			</div>
