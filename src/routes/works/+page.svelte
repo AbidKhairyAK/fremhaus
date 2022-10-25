@@ -63,7 +63,7 @@
 
 <svelte:head>
   <title>Works | Fremhaus</title>
-  <meta name="description" value="As for now, our portfolio showcase is still limited and It will be updated along the way.">
+  <meta name="description" content="As for now, our portfolio showcase is still limited and It will be updated along the way.">
 </svelte:head>
 
 {#if loaded}
